@@ -1,37 +1,42 @@
 import React from 'react';
 
-function App() {
-  /**
-   * jsxの方が直感的に記述できる
-   */
-  // const greeting = 'Hi, Tom!';
-  // //jsxではclassは"className"を使う
-  // const dom = <h1 className="foo">{greeting}</h1>;
-  // return dom;
+/**
+ * Components
+ */
+//classコンポーネント
+// class App extends Component {
+//   render() {
+//     return (
+//       <React.Fragment>
+//         <label htmlFor="foo">foo</label>
+//         <input
+//           type="text"
+//           onClick={() => {
+//             console.log("I'm clicked.");
+//           }}
+//         />
+//       </React.Fragment>
+//     );
+//   }
+// }
 
-  //onClick
+//Functionコンポーネント
+// function App() {
+//   return <h1>Hello</h1>;
+// }
+const App = () => {
   return (
-    // <div>
-    //   <label htmlFor="foo">foo</label>
-    //   <input
-    //     type="text"
-    //     onClick={() => {
-    //       console.log('I am clicked.');
-    //     }}
-    //   />
-    // </div>
-
-    //外側のタグを表示したくない場合は"React.Fragment"
-    <React.Fragment>
-      <label htmlFor="foo">foo</label>
-      <input
-        type="text"
-        onClick={() => {
-          console.log('I am clicked.');
-        }}
-      />
-    </React.Fragment>
+    <div>
+      <Cat />
+      <Cat />
+      <Cat />
+      <Cat />
+    </div>
   );
-}
+};
+
+const Cat = () => {
+  return <div>Meow!</div>;
+};
 
 export default App;
