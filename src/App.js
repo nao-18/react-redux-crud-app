@@ -1,9 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //Functionコンポーネント
-// function App() {
-//   return <h1>Hello</h1>;
-// }
 const App = () => {
   const profiles = [
     {
@@ -33,6 +31,13 @@ const User = (props) => {
       Hi, I am {props.name}, and {props.age} years old!
     </div>
   );
+};
+
+//PropTypes
+User.propTypes = {
+  name: PropTypes.string,
+  //必須化(isRequired)
+  age: PropTypes.number.isRequired,
 };
 
 //defaultProps
