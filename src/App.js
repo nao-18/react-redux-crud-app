@@ -1,42 +1,43 @@
 import React from 'react';
 
-/**
- * Components
- */
-//classコンポーネント
-// class App extends Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <label htmlFor="foo">foo</label>
-//         <input
-//           type="text"
-//           onClick={() => {
-//             console.log("I'm clicked.");
-//           }}
-//         />
-//       </React.Fragment>
-//     );
-//   }
-// }
-
 //Functionコンポーネント
 // function App() {
 //   return <h1>Hello</h1>;
 // }
 const App = () => {
+  const profiles = [
+    {
+      name: 'Taro',
+      age: 20,
+    },
+    {
+      name: 'Hanako',
+      age: 30,
+    },
+    {
+      name: 'NoName',
+    },
+  ];
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      {profiles.map((profile, index) => {
+        return <User name={profile.name} age={profile.age} key={index} />;
+      })}
     </div>
   );
 };
 
-const Cat = () => {
-  return <div>Meow!</div>;
+const User = (props) => {
+  return (
+    <div>
+      Hi, I am {props.name}, and {props.age} years old!
+    </div>
+  );
+};
+
+//defaultProps
+User.defaultProps = {
+  age: 1,
 };
 
 export default App;
