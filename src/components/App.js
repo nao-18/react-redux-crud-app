@@ -1,42 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-//Functionコンポーネント
-const App = () => <Counter />;
+import { increment, decrement } from '../actions';
 
-class Counter extends Component {
-  //親からpropsを受け取る
-  constructor(props) {
-    //親クラスでpropsを初期化する
-    super(props);
-    this.state = { count: 0 };
-  }
-
-  //メンバ変数
-  hundlePlusButton = () => {
-    //setStateによってstateを更新した際に、再度renderが呼ばれる
-    this.setState({
-      count: this.state.count + 1,
-    });
-  };
-
-  hundleMinusButton = () => {
-    const count = this.state.count;
-    if (count > 0) {
-      this.setState({
-        count: count - 1,
-      });
-    }
-  };
-
+class App extends Component {
   render() {
+    const props = this.props;
+
     return (
       <React.Fragment>
-        <div>count: {this.state.count}</div>
-        <button onClick={this.hundlePlusButton}>+1</button>
-        <button onClick={this.hundleMinusButton}>-1</button>
+        <div>value: {props.value}</div>
+        <button onClick={props.increment}>+1</button>
+        <button onClick={props.decrement}>-1</button>
       </React.Fragment>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({ value: state.count.value });
+// const mapDispatchProps = (dispatch) => ({
+//   increment: () => dispatch(increment()),
+//   decrement: () => dispatch(decrement()),
+// });
+
+//省略形
+const mapDispatchProps = {
+  increment,
+  decrement,
+};
+
+export default connect(mapStateToProps, mapDispatchProps)(App);
